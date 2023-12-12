@@ -1,0 +1,2812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+.top{
+  position: sticky;
+  top: 0;
+}
+/* Header/logo Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: #f7b787;
+  color: white;
+}
+
+.search {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}/*
+.search::before, .search img, .lightbox {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.search::before {
+  content: "";
+  z-index: 1;
+  background: rgba(0,0,0,0.25);
+}
+*/
+.search .content {
+  z-index: 2;
+  color: #fff;
+  padding: 0 13px;
+  text-align: center;
+  position: relative;
+}
+.content h1 {
+  font-size: 2.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.search .search-box {
+  height: 55px;
+  margin: 45px 0;
+  position: relative;
+}
+.search-box  button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: default;
+  font-size: 1.4rem;
+  transform: translateY(-50%);
+  padding: .9rem;
+  margin: 1.7rem 0 0 .5rem;
+   background: #f7b787;
+  color: #F9E8D9;
+  width: 60px;
+}
+.search-box input {
+  width: 100%;
+  height: 99%;
+  outline: none;
+  border: none;
+  font-size: 1.1rem;
+  padding-left: 30px;
+  background: #fff;
+  border-radius: 5px;
+}
+.search-box input::placeholder {
+  color: #929292;
+}
+.search-box input:focus::placeholder {
+  color: #bfbfbf;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+#buttons {
+  display: flex;
+  justify-content:left;
+  margin: auto;
+  background:#F9E8D9;
+}
+
+.button-value {
+  border: none;
+  display: inline-block;
+  background-color: transparent;
+  color: #111;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0 10px;
+  margin: 20px;
+}
+
+.active {
+  color: #111;
+  border-bottom: .2rem solid #F7B787;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  position: absolute;
+  right: 0;
+    display: block;
+     color: #333;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+.right i{
+  font-size: 2rem;
+}
+/* Change color on hover */
+.navbar a:hover {
+   color:#f7b787;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  width: 100%;
+  max-width: 50%;
+  border-radius: 10px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin:auto;
+  margin-right:.5rem;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wrapper-input {
+  width: 100%;
+  margin: auto;
+  background: #fff;
+}
+::selection{
+  color: #fff;
+  background: #F7B787;
+}
+.wrapper{
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 25px 40px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+.wrapper header h2{
+  font-size: 24px;
+  font-weight: 600;
+}
+.wrapper header p{
+  margin-top: 5px;
+  font-size: 16px;
+}
+.price-input{
+  width: 100%;
+  display: flex;
+  margin: 30px 0 35px;
+}
+.price-input .field{
+  display: flex;
+  width: 100%;
+  height: 45px;
+  align-items: center;
+}
+.field input{
+  width: 100%;
+  height: 100%;
+  outline: none;
+  font-size: 19px;
+  margin-left: 12px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #999;
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.price-input .separator{
+  width: 130px;
+  display: flex;
+  font-size: 19px;
+  align-items: center;
+  justify-content: center;
+}
+.slider{
+  height: 5px;
+  position: relative;
+  background: #ddd;
+  border-radius: 5px;
+}
+.slider .progress{
+  height: 100%;
+  left: 25%;
+  right: 25%;
+  position: absolute;
+  border-radius: 5px;
+  background: #f7b787;
+}
+.range-input{
+  position: relative;
+}
+.range-input input{
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  top: -5px;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+input[type="range"]::-webkit-slider-thumb{
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background: #f7bf93;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+}
+input[type="range"]::-moz-range-thumb{
+  height: 17px;
+  width: 17px;
+  border: none;
+  border-radius: 50%;
+  background: #17A2B8;
+  pointer-events: auto;
+  -moz-appearance: none;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+}
+
+/* Main column */
+.main {  
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+}
+
+.social a {
+  font-size: 20px;
+  color:#f5f5f5;
+  border: 1px solid #ccc;
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 8px;
+  opacity: 0.75;
+  margin: 7rem 0 0 0;
+}
+.social a:hover {
+  opacity: 0.9;
+}
+
+#products {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  padding: 5rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .5rem ;
+    border-radius: .5rem;
+    overflow: hidden;
+  background-color:#fff;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+    width:50%;
+    height: auto;
+    padding: 3rem 0;
+    transition: .5s;
+}
+
+img {
+  max-width: 100%; height: auto;
+}
+
+ .container {
+ color: #110f29;
+ font-weight: bold;
+ font-size: 2vw;
+ text-align: center;
+ margin: auto;
+}
+
+.container h5 {
+ color: #111;
+ margin: auto;
+ font-size: 1vw;
+ text-transform: uppercase;
+}
+
+.hide {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+ #products {
+    grid-template-columns: repeat(2, 1fr);
+ }
+ .button-value{
+  font-size: 1.5rem;
+ }
+}
+
+@media screen and (max-width: 768px) {
+ #products {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .button-value{
+    font-size: 15px;
+  }
+  .container {
+ font-size: 4.5vw;
+}
+
+.container h5 {
+ font-size: 3vw;
+}
+ }
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #f7b787;
+}
+.footer .social {
+  text-align: center;
+  padding-bottom: 25px;
+  color: #fff;
+}
+.footer .social a {
+  font-size: 24px;
+  color:#f5f5f5;
+  border: 1px solid #ccc;
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 8px;
+  opacity: 0.75;
+}
+.footer .social a:hover {
+  opacity: 0.9;
+}
+.footer ul {
+  margin-top: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.footer ul a {
+  color:#fff;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.footer ul li {
+  display: inline-block;
+  padding: 0 15px;
+}
+.footer ul a:hover {
+  opacity: 1;
+}
+.footer .copyright {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+}
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="header">
+<div class="search">
+  <div class="content">
+        <h1>What are you looking for?</h1>
+        <div class="search-box"  id="search-and-filter-container">
+          <input type="search"   id="search-input" placeholder="Search Items">
+          <button  id="search"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="navbar">
+ <div id="buttons">
+          <button class="button-value" onclick="filterProduct('all')">All</button>
+          <button class="button-value" onclick="filterProduct('Clothing')">
+            Clothing
+          </button>
+          <button class="button-value" onclick="filterProduct('Accecories')">
+            Accecories
+          </button>
+          <button class="button-value" onclick="filterProduct('Shoes')">
+            Shoes
+          </button>
+                    <a href="#" class="right"><i class="fa fa-filter"  id="myBtn"></i></a>
+        </div>
+</div>
+</div>
+<div class="row">
+  <div class="main">
+       <div id="products">
+       </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="  fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="  fa fa-youtube-play"></i></a>
+      </div>
+<ul class="list">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Services</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Terms</a>
+        </li>
+        <li>
+          <a href="#">Privacy Policy</a>
+        </li>
+      </ul>
+      <p class="copyright">SDF104 @ 2023</p>
+</div>
+
+
+  <div class="wrapper-input">
+      <div id="search-and-filter-container">
+       
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+           
+            <div class="wrapper">
+              <header>
+                <h2>Price Range</h2>
+                <p>Use slider or enter min and max price</p>
+              </header>
+              <div class="price-input">
+                <div class="field">
+                  <span>Min</span>
+                  <input
+                    type="number"
+                    class="input-min"
+                    value="2500"
+                    id="price-range"
+                  />
+                </div>
+                <div class="separator">-</div>
+                <div class="field">
+                  <span>Max</span>
+                  <input
+                    type="number"
+                    class="input-max"
+                    value="7500"
+                    id="price-range"
+                  />
+                </div>
+              </div>
+              <div class="slider">
+                <div class="progress"></div>
+              </div>
+              <div class="range-input">
+                <input
+                  type="range"
+                  class="range-min"
+                  min="0"
+                  max="10000"
+                  value="2500"
+                  step="100"
+                  id="price-range"
+                />
+                <input
+                  type="range"
+                  class="range-max"
+                  min="0"
+                  max="10000"
+                  value="7500"
+                  step="100"
+                  id="price-range"
+                />
+              </div>
+              <button
+                id="price-range-search"
+                aria-label="Filter products by price range"
+               style=" display:flex;
+  margin:auto;
+  padding: .9rem;
+  background-color: #f7b787;
+  color: #ffffff;
+  font-size:15px;
+  border-radius: 5px;
+  border:none;
+  margin-top:2rem;
+  letter-spacing:1px;
+   cursor:pointer;">
+                Filter
+              </button>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+<script>
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var prange = document.getElementById("price-range-search");
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+prange.onclick = function () {
+  modal.style.display = "none";
+};
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  let products = {
+  data: [
+    {
+      id: 1,
+      productName: "Women Dry Sweat Cropped Long Sleeve Full-Zip Hoodie uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 10.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/452214/sub/goods_452214_sub25.jpg?width=494",
+    },
+    {
+      id: 2,
+      productName: "Rayon Long-Sleeve Blouse uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 25.0,
+      image: "https://media.karousell.com/media/photos/products/2023/8/21/uniqlo_rayon_long_sleeve_blous_1692618725_0794189f_progressive.jpg",
+    },
+    {
+      id: 3,
+      productName: "3d cotton V-neck Top Shirt Uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 50.0,
+      image: "https://media.karousell.com/media/photos/products/2022/8/16/uniqlo_3d_cotton_vneck_top_1660669711_b6b7d147_progressive.jpg",
+    },
+    {
+      id: 3,
+      productName: "Cable V-neck Knitted Vest Uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 50.0,
+      image: "https://image.uniqlo.com/UQ/ST3/au/imagesgoods/456315/sub/augoods_456315_sub1.jpg?width=494",
+    },
+    {
+      id: 3,
+      productName: "Wash Jersey Jogger Pants Uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 20.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/461440/sub/goods_461440_sub13.jpg?width=494",
+    },
+    {
+      id: 3,
+      productName: "Tee Time-Tshirt Uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 15.0,
+      image: "https://ae01.alicdn.com/kf/H3821d9f46d0548fe9536fb5867cf9d0d0/T-shirts-Women-5-Colors-Solid-Short-Sleeve-Korean-Style-Simple-Loose-All-match-Students-Unisex.jpg_Q90.jpg_.webp",
+    },
+     {
+      id: 3,
+      productName: "Wide Fit Jeans Uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 30.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/450245/sub/goods_450245_sub13.jpg?width=494",
+    },
+    {
+      id: 3,
+      productName: "Women's Smart Ankle Pants Uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 50.0,
+      image: "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/464140/sub/goods_464140_sub13.jpg?width=494",
+    },
+    {
+      id: 3,
+      productName: "High Quality Satin Skirt Uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 60.0,
+      image: "https://down-my.img.susercontent.com/file/58cfcacb1fe4b63e1849338c9d0c38ff",
+    },
+     {
+      id: 3,
+      productName: "Chino Shorts Uniqlo",
+      category: "Clothing",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 10.0,
+      image: "https://www.uniqlo.com/jp/ja/contents/feature/masterpiece/common_22fw/img/item_59_01.jpg?220211",
+    },
+    {
+      id: 5,
+      productName: "Nike Sportswear Long-sleeve T-shirt ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/91d66dab-124b-4021-b2f9-c69741d9fb48/sportswear-long-sleeve-t-shirt-3R2Q2Q.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Fleece Pullover Skate Hoodie ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d897d872-3178-4b80-a16c-69982fe25632/sb-fleece-pullover-skate-hoodie-Fh3vRX.png",
+    },
+    {
+      id: 5,
+      productName: "Nike Men's Skate T-Shirt ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/26d65a36-d8f3-490d-b869-3234d9a568ab/sb-skate-t-shirt-XGhjMB.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Short-Sleeve T-Shirt ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/907ff10a-d256-47f1-9c64-91eaf695a39f/ispa-short-sleeve-t-shirt-9bTC3J.png",
+    },
+    {
+      id: 5,
+      productName: "Nike Dri-FIT Victory Women's Golf Polo ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1cf0b935-b734-4b7d-aa03-5b64ec1f6cc4/dri-fit-victory-golf-polo-snD3wZ.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Women's Short-sleeve T-Shirt Dress",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2d7c6f96-0103-4685-ab40-38c6e6f8d809/sportswear-essential-short-sleeve-t-shirt-dress-mWMWjW.png",
+    },
+    {
+      id: 5,
+      productName: "Nike Windrunner Men's Repel Running Jacket ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/739b6411-0e9d-458c-bf5e-04849e8bf30d/windrunner-repel-running-jacket-fw4NBt.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Sportswear Air Women's Fleece Oversized High-Rise Joggers ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d739ace2-5949-4f80-b081-3d74ac611a34/sportswear-air-fleece-oversized-high-rise-joggers-krw9mV.png",
+    },
+    {
+      id: 5,
+      productName: "Nike  Dri-FIT Men's Camo Sleeveless T-Shirt ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6eb6baf3-3b7f-4f8d-ba39-924e3e934380/dri-fit-camo-sleeveless-t-shirt-2zbrkd.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Mesh Shorts ",
+      category: "Clothing",
+      brand: "Nike",
+      quantity: 1,
+      price: 60.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/1ced45ab-ac1d-4746-a06b-68ea2fa11a3e/jordan-artist-series-by-umar-rashid-mesh-shorts-G9cjT4.png",
+    },
+    {
+      id: 4,
+      productName: "Levi's WELLTHREAD MEN'S ARROWOOD SHIRT",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/Levis-WellThread-Mens-Arrowood-Shirt-A61360000_01_Front.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's WOMEN'S NOLA OVERSIZED SHIRT",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-womens-nola-oversized-shirt-A33620019_01_Front.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's MEN'S 512 SLIM TAPER JEANS",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-mens-512-slim-taper-jeans-288331147_01_Front.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's WOMEN'S RIBCAGE WIDE-LEG JEANS",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-womens-ribcage-wide-leg-jeans-A60810002_01_Front.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's MEN'S SWIFT PERFORMANCE POLO",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-mens-swift-performance-polo-A57960000_01_Front.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's WOMEN'S SIDE SLIT SKIRT",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/Levis-Womens-Side-Slit-Skirt-A47110000_01_Front.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's WOMEN'S GRAPHIC CLASSIC TEE SHIRT",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=542,height=723,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/Levis-Womens-Graphic-Classic-Tee-A22260070_01_Front.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's WOMEN'S MONICA LONG-SLEEVE T-SHIRT",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/Levis-Womens-Monica-Long-Sleeve-T-Shirt-A71940003_01_Front%20.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's MEN'S XX CHINO AUTHENTIC SHORTS",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-mens-xx-chino-authentic-shorts-A47640015_01_Front.jpg",
+    },
+     {
+      id: 4,
+      productName: "Levi's MEN'S 501 ORIGINAL JEANS",
+      category: "Clothing",
+      brand: "Levi's",
+      quantity: 1,
+      price: 50.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-501-original-fit-jeans-for-men-parrish-close-up-front-view.jpg",
+    },
+     {
+      id: 9,
+      productName: "Mango Wrap Dress With Lapels",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/outfit/S20/57039110_99-99999999_01.jpg?ts=1695897173218&imwidth=470&imdensity=2&impolicy=featured",
+    },
+     {
+      id: 9,
+      productName: "Mango Classic Trench Coat With Belt",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/outfit/S20/57023725_37-99999999_01.jpg?ts=1693906374444&imwidth=470&imdensity=2",
+    },
+     {
+      id: 9,
+      productName: "Mango Sweatshirt With Patch Pocket",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57045964_08_D2.jpg?ts=1693379009648&imwidth=470&imdensity=2",
+    },
+     {
+      id: 9,
+      productName: "Mango Short-Sleeved Satin Blouse",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57093811_50.jpg?ts=1687336378691&imwidth=470&imdensity=2",
+    },
+     {
+      id: 9,
+      productName: "Mango Boat-Neck Knitted Sweater",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57005815_09.jpg?ts=1696836778449&imwidth=470&imdensity=2&impolicy=featured",
+    },
+     {
+      id: 9,
+      productName: "Mango Buttoned Printed Shirt",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57072881_46.jpg?ts=1686308659808&imwidth=470&imdensity=2",
+    },
+     {
+      id: 9,
+      productName: "Mango Knitted Wool-Blend Polo Shirt",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57007723_48.jpg?ts=1694091820016&imwidth=470&imdensity=2",
+    },
+     {
+      id: 9,
+      productName: "Mango Cotton Pyjama Shorts Pack",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T4/fotos/outfit/S20/47065959_01-99999999_01.jpg?ts=1676473400866&imwidth=470&imdensity=2",
+    },
+     {
+      id: 9,
+      productName: "Mango Textured Criss-cross Skirt",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/outfit/S20/57040105_06-99999999_01.jpg?ts=1684134280798&imwidth=470&imdensity=2",
+    },
+     {
+      id: 9,
+      productName: "Mango Pleat Straight Trousers",
+      category: "Clothing",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/outfit/S20/57040780_40-99999999_01.jpg?ts=1684920828993&imwidth=470&imdensity=2",
+    },
+     {
+      id: 8,
+      productName: "H&M Rib-Knit Dress",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Ff4%2F17%2Ff4176aae04e03ac1858af3ff4f1da9781b1cfbb8.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+     {
+      id: 8,
+      productName: "H&M Textured Mini Skirt",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F4f%2Fc4%2F4fc4ce2f7909607ed3c01604c040ecac13275af2.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+    },
+    {
+      id: 8,
+      productName: "H&M Men's Straight Regular Jeans",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F23%2F7a%2F237a2aadb84f10371aac36c88fed8574a64d2253.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+    },
+     {
+      id: 8,
+      productName: "H&M Men's Cargo joggers",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F3f%2F43%2F3f43009b017befa5d4c018382bc05cc60439a937.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+    {
+      id: 8,
+      productName: "H&M Women's High-waisted Tailored Trousers Pants",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fb0%2F2f%2Fb02f2bcf03776079d665355b09ecde9cc1424d09.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+    },
+     {
+      id: 8,
+      productName: "H&M 5-pack Slim Fit T-shirts",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F77%2F00%2F770078f28797c70765affb4e7601b2952fecfff1.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_tshirtstanks_multipacks%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+    },
+    {
+      id: 8,
+      productName: "H&M 3-pack Regular Fit Polo Shirts",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Ffe%2Fb5%2Ffeb51927df86df6e0b0de2321566b52dbe7d200a.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5BMEN_TSHIRTSTANKS_POLO%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+    },
+     {
+      id: 8,
+      productName: "H&M 2-pack Jersey Tops",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Faa%2F69%2Faa69a69192282eacd07d7b10ce6a88e2b3c41eb9.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_basics_tops_longsleeve%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+    },
+    {
+      id: 8,
+      productName: "H&M Double-Breasted Blazer",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F7b%2Fa2%2F7ba24df4e705c24aef5e7386f354962e830ff97f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+     {
+      id: 8,
+      productName: "H&M Sweat Shorts",
+      category: "Clothing",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F34%2F20%2F3420de1087d945015331936c021c90fb08961475.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+    },
+     {
+      id: 5,
+      productName: "Uniqlo Comfeel Touch Loafer",
+      category: "Shoes",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 10.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/461925/item/goods_09_461925.jpg?width=320",
+    },
+     {
+      id: 5,
+      productName: "Uniqlo Canvas Sneakers",
+      category: "Shoes",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 10.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/450232/item/goods_09_450232.jpg?width=750",
+    },
+    {
+      id: 5,
+      productName: "Uniqlo Plain Toe Derby Shoes",
+      category: "Shoes",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 10.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/434992/sub/goods_434992_sub18.jpg?width=750",
+    },
+     {
+      id: 5,
+      productName: "Uniqlo Comfeel Touch Heeled Shoes",
+      category: "Shoes",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 25.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/432941/item/goods_05_432941.jpg?width=750",
+    },
+     {
+      id: 5,
+      productName: "Uniqlo Sweat Jersey Room Shoes (Rubber Sole)",
+      category: "Shoes",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 25.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/461909/item/goods_10_461909.jpg?width=750",
+    },
+     {
+      id: 5,
+      productName: "Uniqlo Round Mini Shoulder Bag",
+      category: "Accecories",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 15.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/461053/item/goods_72_461053.jpg?width=320",
+    },
+     {
+      id: 5,
+      productName: "Uniqlo UV Protection Cap",
+      category: "Accecories",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 10.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/469216001/item/goods_69_469216001.jpg?width=320",
+    },
+     {
+      id: 5,
+      productName: "Uniqlo Striped Chunky Stole",
+      category: "Accecories",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 10.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/465499/item/goods_12_465499.jpg?width=320",
+    },
+     {
+      id: 5,
+      productName: "Uniqlo Tote Bag",
+      category: "Accecories",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 20.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462097/item/goods_30_462097.jpg?width=320",
+    },
+    {
+      id: 5,
+      productName: "Uniqlo Cotton Watch Cap",
+      category: "Accecories",
+      brand: "Uniqlo",
+      quantity: 1,
+      price: 20.0,
+      image: "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/467213/item/goods_07_467213.jpg?width=320",
+    },
+    //
+     {
+      id: 5,
+      productName: "Nike Air Force 1 '07 Premium Women's Shoes",
+      category: "Shoes",
+      brand: "Nike",
+      quantity: 1,
+      price: 10.0,
+      image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/8d052a01-d123-43ca-b12d-bffc1986aac3/air-force-1-07-shoes-6CMbXH.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Air Pegasus '89 Men's Shoes",
+      category: "Shoes",
+      brand: "Nike",
+      quantity: 1,
+      price: 10.0,
+      image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/55d65a24-20df-4dc3-b47b-da86e08e61cc/air-pegasus-89-shoes-WMcn5F.png",
+    },
+    {
+      id: 5,
+      productName: "Nike Air Force 1 '07 Men's Shoes",
+      category: "Shoes",
+      brand: "Nike",
+      quantity: 1,
+      price: 10.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fa7c385b-0f6d-4bd9-8a0f-6038d8d8a355/air-force-1-07-shoes-VWCc04.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Victori One Women's Slides",
+      category: "Shoes",
+      brand: "Nike",
+      quantity: 1,
+      price: 25.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/11c7cf81-0501-4269-a02c-bfa606c52a31/victori-one-slides-sRBzK2.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Jordan Sophia Women's Slides",
+      category: "Shoes",
+      brand: "Nike",
+      quantity: 1,
+      price: 35.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/817368c1-0d9a-48ed-8b6c-d48af2fe86b1/jordan-sophia-slides-dcq32F.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Club Unstructured Tie-Dye Cap",
+      category: "Accecories",
+      brand: "Nike",
+      quantity: 1,
+      price: 15.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ad8501e0-d6d1-4114-bdac-1529cc5e0cde/club-unstructured-tie-dye-cap-m3k2xq.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Peak Beanie",
+      category: "Accecories",
+      brand: "Nike",
+      quantity: 1,
+      price: 10.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/424022a1-5a52-4fe3-83c9-3b57461a91e4/peak-beanie-msLLZ4.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Gym Tote bag",
+      category: "Accecories",
+      brand: "Nike",
+      quantity: 1,
+      price: 10.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e6033fa0-55db-4761-a87f-e51a7ae61ae4/gym-tote-GcMSHX.png",
+    },
+     {
+      id: 5,
+      productName: "Nike Utility Power Duffel Bag ",
+      category: "Accecories",
+      brand: "Nike",
+      quantity: 1,
+      price: 45.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fde6da2f-8696-43ae-b3f5-6f7323c0e948/utility-power-duffel-bag-KL2S5J.png",
+    },
+    {
+      id: 5,
+      productName: "Nike Heritage Hip Pack bag",
+      category: "Accecories",
+      brand: "Nike",
+      quantity: 1,
+      price: 20.0,
+      image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e2d57918-eb14-4d7e-a9fa-6a25c2f9a945/heritage-hip-pack-4ddb2v.png",
+    },
+    //
+    {
+      id: 5,
+      productName: "Mango Wedge Strips Sandals",
+      category: "Shoes",
+      brand: "Mango",
+      quantity: 1,
+      price: 15.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57050030_01.jpg?ts=1678113543344&imwidth=231&imdensity=2",
+    },
+     {
+      id: 5,
+      productName: "Mango Platform Sandals",
+      category: "Shoes",
+      brand: "Mango",
+      quantity: 1,
+      price: 10.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57000435_43.jpg?ts=1683812142685&imwidth=470&imdensity=2",
+    },
+    {
+      id: 5,
+      productName: "Mango Combined Design Sneakers",
+      category: "Shoes",
+      brand: "Mango",
+      quantity: 1,
+      price: 20.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57030032_08.jpg?ts=1680777650608&imwidth=470&imdensity=2",
+    },
+     {
+      id: 5,
+      productName: "Mango Studded Leather Sandals",
+      category: "Shoes",
+      brand: "Mango",
+      quantity: 1,
+      price: 25.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47037825_CU.jpg?ts=1679924414176&imwidth=470&imdensity=2",
+    },
+     {
+      id: 5,
+      productName: "Mango Leather Boat Shoes",
+      category: "Shoes",
+      brand: "Mango",
+      quantity: 1,
+      price: 35.0,
+      image: " https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47082877_30.jpg?ts=1677051535110&imwidth=470&imdensity=2",
+    },
+     {
+      id: 5,
+      productName: "Mango Flowy Scarf",
+      category: "Accecories",
+      brand: "Mango",
+      quantity: 1,
+      price: 50.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57040028_11_B.jpg?ts=1683882224728&imwidth=470&imdensity=2",
+    },
+     {
+      id: 5,
+      productName: "Mango Leather - Effect Backpack ",
+      category: "Accecories",
+      brand: "Mango",
+      quantity: 1,
+      price: 10.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57040823_99_B.jpg?ts=1686826984194&imwidth=470&imdensity=2",
+    },
+     {
+      id: 5,
+      productName: "Mango Crossbody Bag With Flap",
+      category: "Accecories",
+      brand: "Mango",
+      quantity: 1,
+      price: 10.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57038272_02.jpg?ts=1692173025384&imwidth=470&imdensity=2&impolicy=featured",
+    },
+     {
+      id: 5,
+      productName: "Mango Retro Style Sunglasses ",
+      category: "Accecories",
+      brand: "Mango",
+      quantity: 1,
+      price: 45.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T5/fotos/S20/57030031_99.jpg?ts=1680509009258&imwidth=470&imdensity=2",
+    },
+    {
+      id: 5,
+      productName: "Mango Embroidered Message Cap",
+      category: "Accecories",
+      brand: "Mango",
+      quantity: 1,
+      price: 10.0,
+      image: "https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47075937_40.jpg?ts=1684233269462&imwidth=470&imdensity=2",
+    },
+    //
+    {
+      id: 5,
+      productName: "Levi's X CROCS™ ALL TERRAIN CLOGS",
+      category: "Shoes",
+      brand: "Levi's",
+      quantity: 1,
+      price: 10.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-x-crocs-all-terrain-clogs-D78570001_01_Front.jpg ",
+    },
+    {
+      id: 5,
+      productName: "Levi's LEVI'S® X CROCS™ ALL TERRAIN CLOGS",
+      category: "Shoes",
+      brand: "Levi's",
+      quantity: 1,
+      price: 10.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-x-crocs-all-terrain-clogs-D78570002_01_Front.jpg",
+    },
+     {
+      id: 5,
+      productName: "LEVI'S® WOMEN'S ICON BELT",
+      category: "Accecories",
+      brand: "Levi's",
+      quantity: 1,
+      price: 15.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/Levis-Womens-Icon-Belt-D54830002_01_Front.jpg",
+    },
+     {
+      id: 5,
+      productName: "LEVI'S® LUNAR NEW YEAR MEN'S DENIM TOTE BAG",
+      category: "Accecories",
+      brand: "Levi's",
+      quantity: 1,
+      price: 10.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-lunar-new-year-mens-denim-tote-D78800001_01_Front.jpg",
+    },
+     {
+      id: 5,
+      productName: "LEVI'S® MEN'S FLEXFIT® POSTER LOGO CAP",
+      category: "Accecories",
+      brand: "Levi's",
+      quantity: 1,
+      price: 45.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/Levis-Mens-Flexfit-Poster-Logo-Cap-D66250019_01_Front.jpg",
+    },
+    {
+      id: 5,
+      productName: "LEVI'S® MEN'S HERITAGE BELT",
+      category: "Accecories",
+      brand: "Levi's",
+      quantity: 1,
+      price: 20.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-mens-heritage-belt-D77250003_01_Front.jpg",
+    },
+    {
+      id: 5,
+      productName: "LEVI'S® MEN'S CROSSBODY BAG",
+      category: "Accecories",
+      brand: "Levi's",
+      quantity: 1,
+      price: 40.0,
+      image: "https://storage.sg.content-cdn.io/cdn-cgi/image/width=1034,height=1376,quality=75,format=auto,fit=cover,g=top/in-resources/21e9ae3c-de72-4391-9c4a-c7af58447630/Images/ProductImages/Source/levis-mens-crossbody-bag-D77810003_01_Front.jpg",
+    },
+    //
+    {
+      id: 5,
+      productName: "H&M Canvas Trainer Sandals",
+      category: "Shoes",
+      brand: "H&M",
+      quantity: 1,
+      price: 15.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F61%2F30%2F613030b83eb5d9a27310c13cb80a055a7f47ee91.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+     {
+      id: 5,
+      productName: "H&M Espadrille Sandals",
+      category: "Shoes",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Ff6%2F5b%2Ff65b4c0a5fbf583c5a41147a3daf4a11b5384be1.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_divided_shoes%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+    {
+      id: 5,
+      productName: "h&m Chunky Trainers Shoes",
+      category: "Shoes",
+      brand: "H&M",
+      quantity: 1,
+      price: 15.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F6f%2Ff9%2F6ff9cd08e063ed9fc2d8ca208efb65d37ac0c026.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+     {
+      id: 5,
+      productName: "H&M Slides Sandals",
+      category: "Shoes",
+      brand: "H&M",
+      quantity: 1,
+      price: 30.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fab%2Fad%2Fabade816ae5719ec114fa47f1140e377fe803ef8.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+     {
+      id: 5,
+      productName: "H&M Quilted Pool Shoes",
+      category: "Shoes",
+      brand: "H&M",
+      quantity: 1,
+      price: 45.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F1f%2F03%2F1f0336ad7374f0a16b034d4b806330b99eafd427.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_shoes_sandals_espandrillos%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+    },
+     {
+      id: 5,
+      productName: "H&M Shoulder Bag and Pouch",
+      category: "Accecories",
+      brand: "H&M",
+      quantity: 1,
+      price: 55.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F8f%2F9d%2F8f9df95f9773ae0fea941832cf757b329241dcc8.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_accessories_bags_crossbodybags%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+    },
+     {
+      id: 5,
+      productName: "H&M Pendant Earrings",
+      category: "Accecories",
+      brand: "H&M",
+      quantity: 1,
+      price: 10.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fe2%2F0d%2Fe20dc6a30298dd0c1f82ed47a679122481fbd893.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+    },
+     {
+      id: 5,
+      productName: "H&M Rib-Knit Hat",
+      category: "Accecories",
+      brand: "H&M",
+      quantity: 1,
+      price: 10.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fa6%2Ff5%2Fa6f59a4a7dfe43646635e43e9a05b268b9abead0.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+    },
+     {
+      id: 5,
+      productName: "H&M Water-Repellent Sports Cap",
+      category: "Accecories",
+      brand: "H&M ",
+      quantity: 1,
+      price: 25.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F86%2F09%2F8609a67f2ada27a8ea74a848d5b9f08b37d0e6cd.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+    {
+      id: 5,
+      productName: "H&M Small Shoulder Bag",
+      category: "Accecories",
+      brand: "H&M",
+      quantity: 1,
+      price: 20.0,
+      image: "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fba%2F4d%2Fba4db00aaad1256edc9d35e293143d27fd4fc151.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    },
+    //
+    {
+      id: 6,
+      productName: "Adidas Sandals",
+      category: "Shoes",
+      brand: "Adidas",
+      quantity: 1,
+      price: 40.0,
+      image: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/1cb32af04e1d4ee39390af9c01294623_9366/Adilette_Adventure_Sandals_White_HQ4242_01_standard.jpg",
+    },
+    {
+      id: 7,
+      productName: "Zara Dress",
+      category: "Clothing",
+      brand: "Zara",
+      quantity: 1,
+      price: 30.0,
+      image: "https://static.zara.net/photos///2023/I/0/1/p/8170/592/250/2/w/412/8170592250_2_1_1.jpg?ts=1690970186229",
+    },
+    {
+      id: 10,
+      productName: "Christian Louboutin Heels",
+      category: "Shoes",
+      brand: "Christian Louboutin",
+      quantity: 1,
+      price: 70.0,
+      image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/1/3191416bk01-3191416bk01-main_image-ecommerce-christianlouboutin-kate-3191416_bk01_1_1200x1200.jpg",
+    },
+    {
+      id: 11,
+      productName: "The North Face Jacket",
+      category: "Clothing",
+      brand: "The North Face",
+      quantity: 1,
+      price: 40.0,
+      image: "https://my-test-11.slatic.net/p/8864b45f8754fd7a1322c3eda4417e9f.jpg",
+    },
+    {
+      id: 12,
+      productName: "Gucci Hat",
+      category: "Accecories",
+      brand: "Gucci",
+      quantity: 1,
+      price: 10.0,
+      image: "https://eteft.com/cdn/shop/products/49_684e967c-10c6-4b23-ba9e-52e4253c61e5.png?v=1664793332",
+
+     },
+     {
+      id: 1,
+        productName: "WIND PROTECTION FAUX LEATHER PUFFER JACKET Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 100.0,
+        image: "https://static.zara.net/photos///2024/V/0/1/p/3046/202/712/17/w/563/3046202712_1_1_1.jpg?ts=1701942344844",
+     },
+     {
+
+      id: 1,
+        productName: "RUBBERISED PUFFER JACKET ANORAK Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 180.0,
+        image: "https://static.zara.net/photos///2023/I/0/1/p/3046/203/505/17/w/266/3046203505_2_1_1.jpg?ts=1701942425191",
+     },
+     {
+
+
+      id: 1,
+        productName: "ZW COLLECTION DRAPED OPEN BACK DRESS Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 190.0,
+        image: "https://static.zara.net/photos///2023/I/0/1/p/2888/240/800/2/w/266/2888240800_1_1_1.jpg?ts=1701801109848",
+     },
+     {
+
+
+      id: 1,
+        productName: "ZW COLLECTION MANTECO WOOL BLEND COAT WITH HOOD Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 290.0,
+        image: "https://static.zara.net/photos///2024/V/0/1/p/9202/845/700/3/w/266/9202845700_15_1_1.jpg?ts=1701890415647",
+     },
+     {
+
+
+      id: 1,
+        productName: "ZW COLLECTION SILHOUETTE VELVET DRESS Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 110.0,
+        image: "https://static.zara.net/photos///2023/I/0/1/p/2731/327/800/2/w/266/2731327800_1_1_1.jpg?ts=1701887614827",
+      },
+     {
+
+
+
+      id: 1,
+        productName: "COMFORT COAT Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 180.0,
+        image: "https://static.zara.net/photos///2024/V/0/1/p/5070/300/710/12/w/236/5070300710_1_1_1.jpg?ts=1701945049533",
+
+     },
+     {
+
+
+      id: 1,
+        productName: "WOOL BLEND COAT Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 340.0,
+        image: "https://static.zara.net/photos///2023/I/0/2/p/6864/752/707/2/w/154/6864752707_1_1_1.jpg?ts=1698752259606",
+
+
+      },
+     {
+
+id: 1,
+        productName: "COTTON CHINOS TROUSER PANTS Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 330.0,
+        image: "https://static.zara.net/photos///2023/I/0/2/p/1934/330/710/2/w/127/1934330710_6_1_1.jpg?ts=1685697712557",
+
+     },
+     {
+
+
+id: 1,
+        productName: "TEXTURED TROUSERS Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 90.0,
+        image: "https://static.zara.net/photos///2023/I/0/2/p/1182/238/700/2/w/266/1182238700_1_1_1.jpg?ts=1701428444541",
+
+      },
+     {
+
+id: 1,
+        productName: "RAISED EMBROIDERY SHIRT Zara",
+        category: "Clothing",
+        brand: "Zara",
+        quantity: 1,
+        price: 60.0,
+        image: "https://static.zara.net/photos///2023/I/0/2/p/0881/334/703/2/w/266/0881334703_2_1_1.jpg?ts=1701772433851",
+
+     
+     },
+     {
+
+
+      id: 1,
+        productName: "HIGH-HEEL ANKLE BOOTS WITH RHINEST Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 80.0,
+        image: "https://static.zara.net/photos///2024/V/1/1/p/2137/310/802/2/w/266/2137310802_1_1_1.jpg?ts=1701704153263",
+
+     },
+     {
+      id: 1,
+        productName: "LEATHER BOOTS Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 450.0,
+        image: "https://static.zara.net/photos///2024/V/1/1/p/3057/210/800/2/w/266/3057210800_2_1_1.jpg?ts=1701704153278",
+     },
+     {
+      id: 1,
+        productName: "LEATHER ANKLE BOOTS WITH BUCKLES Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 235.0,
+        image: "https://static.zara.net/photos///2024/V/1/1/p/1110/310/800/22/w/266/1110310800_15_1_1.jpg?ts=1701792424292",
+      },
+     {
+
+
+      id: 1,
+        productName: "RUBBERISED CLOGS SHOES Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 440.0,
+        image: "https://static.zara.net/photos///2024/V/1/1/p/3564/210/800/2/w/266/3564210800_6_1_1.jpg?ts=1701949724540",
+      },
+     {
+
+      id: 1,
+        productName: "HIGH-HEEL SHOES WITH BUCKLED STRAPS Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 220.0,
+        image: "https://static.zara.net/photos///2024/V/1/1/p/3252/310/800/2/w/266/3252310800_2_2_1.jpg?ts=1701433034752",
+     },
+     {
+
+
+      id: 1,
+        productName: "METALLIC COWBOY BOOTS Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 1000.0,
+        image: "https://static.zara.net/photos///2023/I/1/2/p/2028/220/808/2/w/241/2028220808_2_2_1.jpg?ts=1698314066434",
+     },
+     {
+
+      id: 1,
+        productName: "FAUX-PATENT-FINISH CHUNKY LOAFERS SHOES Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 120.0,
+        image: "https://static.zara.net/photos///2024/V/1/1/p/2600/320/800/3/w/231/2600320800_2_2_1.jpg?ts=1700130354205",
+
+      },
+     {
+
+      id: 1,
+        productName: "VIBRAM® LEATHER SHOES Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 80.0,
+        image: "https://static.zara.net/photos///2023/I/1/2/p/2670/120/800/2/w/123/2670120800_6_1_1.jpg?ts=1689785185332",
+
+      },
+     {
+      id: 1,
+        productName: "BOOTS WITH HOOKS Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 90.0,
+        image: "https://static.zara.net/photos///2024/V/1/2/p/2103/320/800/2/w/266/2103320800_6_1_1.jpg?ts=1701174202243",
+      },
+     {
+
+      id: 1,
+        productName: "BUCKLED LEATHER CLOGS SHOES Zara",
+        category: "Shoes",
+        brand: "Zara",
+        quantity: 1,
+        price: 90.0,
+        image: "https://static.zara.net/photos///2023/I/1/2/p/2765/220/800/2/w/266/2765220800_6_1_1.jpg?ts=1697538072804",
+
+      },
+     {
+
+      id: 1,
+        productName: "FLOWER BROOCH Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 50.0,
+        image: "https://static.zara.net/photos///2023/I/0/1/p/4736/284/800/2/w/143/4736284800_6_1_1.jpg?ts=1697022694821",
+
+       },
+     {
+
+      id: 1,
+        productName: "LEATHER BELT Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 100.0,
+        image: "https://static.zara.net/photos///2023/I/0/1/p/6399/214/800/2/w/143/6399214800_6_1_1.jpg?ts=1697536432211",
+
+      },
+     {
+
+      id: 1,
+        productName: "WOOL SCARF Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 200.0,
+        image: "https://static.zara.net/photos///2024/V/0/1/p/0653/011/922/2/w/143/0653011922_6_1_1.jpg?ts=1701958575905",
+
+      },
+     {
+
+      id: 1,
+        productName: "RIBBED KNIT BEANIE Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 130.0,
+        image: "https://static.zara.net/photos///2024/V/0/1/p/3739/019/800/2/w/143/3739019800_6_1_1.jpg?ts=1701968931536",
+
+      },
+     {
+
+      id: 1,
+        productName: "LEATHER EFFECT KNIT GLOVES Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 90.0,
+        image: "https://static.zara.net/photos///2024/V/0/1/p/3920/003/800/2/w/266/3920003800_6_1_1.jpg?ts=1701964104037",
+       },
+     {
+
+
+      id: 1,
+        productName: "NYLON BELT BAG Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 70.0,
+        image: "https://static.zara.net/photos///2024/V/1/2/p/3613/320/800/2/w/563/3613320800_6_1_1.jpg?ts=1701779421747",
+
+      },
+     {
+
+      id: 1,
+        productName: "FADED DENIM CAP Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 80.0,
+        image: "https://static.zara.net/photos///2023/I/0/2/p/9065/399/703/2/w/146/9065399703_6_1_1.jpg?ts=1701772710809",
+
+     },
+     {
+
+      id: 1,
+        productName: "FADED CAP WITH RIPS Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 40.0,
+        image: "https://static.zara.net/photos///2023/I/0/2/p/3920/381/800/2/w/563/3920381800_6_1_1.jpg?ts=1701772709903",
+
+       },
+     {
+
+      id: 1,
+        productName: "MINIMALIST LEATHER BELT Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 40.0,
+        image: "https://static.zara.net/photos///2024/V/0/2/p/5919/408/800/2/w/750/5919408800_6_1_1.jpg?ts=1701772661600",
+
+       },
+     {
+      id: 1,
+        productName: "SHORT KNIT BEANIE Zara",
+        category: "Accessories",
+        brand: "Zara",
+        quantity: 1,
+        price: 90.0,
+        image: "https://static.zara.net/photos///2024/V/0/2/p/9065/403/800/2/w/563/9065403800_6_1_1.jpg?ts=1701097054665",
+
+     },
+     {
+        /* ADIDAS */
+
+      id: 1,
+       productName: "Club Tennis Polo Shirt Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 120.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/63da30ccd29c42c7bacdaefb00c46656_9366/club-tennis-polo-shirt.jpg",
+        },
+     {
+      id: 1,
+        productName: "OWN THE RUN RUNNING TANK TOP SHIRT Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 200.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/962edfdbfe92488b98a6aefa00b36738_9366/own-the-run-running-tank-top.jpg",
+
+      },
+     {
+
+
+      id: 1,
+        productName: "City Escape Cargo Skirt Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 340.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/d8208b86dac4438e9d63367c75749bb4_9366/city-escape-cargo-skirt.jpg",
+     },
+     {
+
+      id: 1,
+        productName: "Essentials 3-Stripes Woven Shorts Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 120.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/599410410abb476c8914aefa00e76606_9366/essentials-3-stripes-woven-shorts.jpg",
+      },
+     {
+
+      id: 1,
+        productName: "Adicolor SST Track Pants Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 80.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/472a560da082405f946bafc80112e81d_9366/adicolor-sst-track-pants.jpg",
+      },
+     {
+
+      id: 1,
+        productName: "Train Essentials 3-Stripes Training Tee Shirt Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 70.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/444618ae92fe444ea1d6af000092d2d3_9366/train-essentials-3-stripes-training-tee.jpg",
+      },
+     {
+
+      id: 1,
+        productName: "Manchester United 23/24 Third Jersey Shirt Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 90.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/f74783ba556244849a2f8dbb1bae3c82_9366/manchester-united-23-24-third-jersey.jpg",
+      },
+     {
+
+
+      id: 1,
+        productName: "Adicolor Classics Trefoil Hoodie Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 70.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/b896d84b61604faf8e77afd000e1445e_9366/adicolor-classics-trefoil-hoodie.jpg",
+     
+       },
+     {
+
+     
+      id: 1,
+        productName: "Gym+ Training 1/4-Zip Long Sleeve Tee Shirt Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 60.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/8c691f9512db40139e83f27cd6a8e0c7_9366/gym_-training-1-4-zip-long-sleeve-tee.jpg",
+
+      },
+     {
+
+      id: 1,
+        productName: "Adicolor Classics SST Track Pants Adidas",
+        category: "Clothing",
+        brand: "Adidas",
+        quantity: 1,
+        price: 40.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/0b106be0fa784731b291a494794744fe_9366/adicolor-classics-sst-track-pants.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Samba OG Shoes Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 210.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/ee99b4b9bde74f30a933a8bf011911ae_9366/samba-og-shoes.jpg",
+
+      },
+     {
+
+
+      id: 1,
+        productName: "Superstar Shoes Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 60.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/8d3ab16a86e64571b405aad600bad099_9366/superstar-shoes.jpg",
+
+
+      },
+     {
+
+
+      id: 1,
+        productName: "Stan Smith Shoes Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 90.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/4e8ad905b6b446b896a3ac1e01049147_9366/stan-smith-shoes.jpg",
+
+
+       },
+     {
+
+
+
+      id: 1,
+        productName: "Adifom Superstar Shoes Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 200.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/a98e1fde3cea4bbba6a8af50010599a3_9366/adifom-superstar-shoes.jpg",
+     },
+     {
+
+      id: 1,
+        productName: "Forum Low Shoes Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 230.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/9775786cd7b446af9ddcac5e004a275e_9366/forum-low-shoes.jpg",
+
+
+     },
+     {
+
+      id: 1,
+        productName: "Island Club Adilette 22 Slides Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 40.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/317facedf01a424f885faf4200f52241_9366/island-club-adilette-22-slides.jpg",
+
+      },
+     {
+
+     
+      id: 1,
+        productName: "Handball Spezial Shoes Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 40.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/6181237298a44c5fb07da96d0111461c_9366/handball-spezial-shoes.jpg",
+      },
+     {
+
+      id: 1,
+        productName: "Dropset 2 Trainer Shoes Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 60.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/667a21981558476d960167ebc2cd20a6_9366/dropset-2-trainer.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Adillete Comfort Slides Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price: 80.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/8561ff6a611e42e6868eae7001764914_9366/adilette-comfort-slides.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Adillete Clogs Shoes Adidas",
+        category: "Shoes",
+        brand: "Adidas",
+        quantity: 1,
+        price:90.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/48468475b0714993b76bad6e00caea4d_9366/adilette-clogs.jpg",
+     
+
+      },
+     {
+
+
+      id: 1,
+        productName: "3-Stripes Cushioned Crew Socks 3 Pairs Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 50.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/19d7b50f686a4a0c8fd8aefc00f86a64_9366/3-stripes-cushioned-crew-socks-3-pairs.jpg",
+
+
+      },
+     {
+
+
+      id: 1,
+        productName: "Classic Cotton Bucket Hat Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 340.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/29de9abbde2a45f5ae38afc20095401a_9366/classic-cotton-bucket-hat.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "CLUBHAUS BUCKET HAT Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 220.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/f0b640c0010a45839c80afcb013ac8cd_9366/clubhaus-bucket-hat.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "ADICOLOR TREFOIL BUCKET HAT Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 60.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/ef2b5c359ad443bfaed3a56401260260_9366/adicolor-trefoil-bucket-hat.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "WATER-RESISTANT BUCKET HAT Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 40.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/22dd2be2352f4b1cbaa22c0cd7f7fa24_9366/water-resistant-bucket-hat.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Classic Badge of Sport 3-Stripes Backpack Bag Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 100.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/1ee64193d70b4bc9aadcae5300d24cb1_9366/classic-badge-of-sport-3-stripes-backpack.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Essential Linear Backpack Bag Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 230.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/ecee65190aef43119da4af3c00ec0cbc_9366/essentials-linear-backpack.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Classic Foundation Waist Bag Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 50.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/7fae012be7824b08a16baf3100f6b215_9366/classic-foundation-waist-bag.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "4ATHLTS Duffel Bag Large Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 450.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/2dda4305aea14efeb12dad9800b03d50_9366/4athlts-duffel-bag-large.jpg",
+     
+
+      },
+     {
+
+      id: 1,
+        productName: "Enamel Bag Adidas",
+        category: "Accessories",
+        brand: "Adidas",
+        quantity: 1,
+        price: 20.0,
+        image: "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/2ed98f5d8d2c4735bf51af1401318d40_9366/enamel-bag.jpg",
+     
+      },
+     {
+
+
+        /* Christian Louboutin */
+
+      id: 1,
+        productName: "Astrid Lace Strassita Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 340.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/c8e9b72c512eaa31cd76a11d9f425a9e/1/2/1240307s352-1240307s352-main_image-ecommerce-christianlouboutin-astridlacestrassita-1240307_s352_1_1200x1200_202310262155.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Zip Booty Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 560.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/2/3230764bk01-3230764bk01-main_image-ecommerce-christianlouboutin-clzipbooty-3230764_bk01_1_1200x1200_202308222144.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Fun Vieira Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 100.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/2/3220579q254-3220579q254-main_image-ecommerce-christianlouboutin-funvieira-3220579_q254_1_1200x1200.jpg",
+
+      },
+     {
+
+      id: 1,
+        productName: "MJ Moc Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 670.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/1/2/1240437l073-1240437l073-main_image-ecommerce-christianlouboutin-mjmoc-1240437_l073_1_1200x1200.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Hot Chick Alta Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 60.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/2/3230023n295-3230023n295-main_image-ecommerce-christianlouboutin-hotchickalta-3230023_n295_1_1200x1200.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Paqueboat Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 470.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/2/3201139f702-3201139f702-main_image-ecommerce-christianlouboutin-paqueboat-3201139_f702_1_1200x1200_202309262146.jpg",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Chambelimoc Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 20.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/1/2/1240391c959-1240391c959-main_image-ecommerce-christianlouboutin-chambelimoc-1240391_c959_1_1200x1200_202308222144.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Greggo Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 40.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/1/1/1150377bk01-1150377bk01-main_image-ecommerce-christianlouboutin-greggo-1150377_bk01_1_1200x1200.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Trapman Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 90.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/1/1/1180244bk01-1180244bk01-main_image-ecommerce-christianlouboutin-trapman-1180244_bk01_1_1200x1200.jpg",
+      },
+     {
+
+      id: 1,
+        productName: "Loubi Flip man Christian Louboutin",
+        category: "Shoes",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 450.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/1/2/1201016r251-1201016r251-main_image-ecommerce-christianlouboutin-loubiflip-1201016_r251_1_1200x1200.jpg",
+     
+      },
+     {
+
+       
+      id: 1,
+        productName: "Loubi54 Christian Louboutin Bag",
+        category: "Accessories",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 150.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/6/3615487594378-3615487594378-main_image-ecommerce-christianlouboutin-loubi54-1245056_5446_1_1200x1200.jpg",
+     
+
+      },
+     {
+
+
+      id: 1,
+        productName: "Cabarock Small Christian Louboutin Bag",
+        category: "Accessories",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 40.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/6/3615487593708-3615487593708-main_image-ecommerce-christianlouboutin-cabarock-1245039_w514_1_1200x1200.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Mooncrest Hat Christian Louboutin",
+        category: "Accessories",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 500.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/2/3235373f701-3235373f701-main_image-ecommerce-christianlouboutin-mooncrest-3235373_f701_1_1200x1200_202308232141.jpg",
+
+      },
+     {
+
+      id: 1,
+        productName: "Christian Louboutin Enky Spikes Hat",
+        category: "Accessories",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 200.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/2/3235320b260-3235320b260-main_image-ecommerce-christianlouboutin-enkyspikes-3235320_b260_1_1200x1200_202311302235.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Loubipool Keyring Christian Louboutin",
+        category: "Accessories",
+        brand: "Christian Louboutin",
+        quantity: 1,
+        price: 170.0,
+        image: "https://us.christianlouboutin.com/media/catalog/product/cache/e88e85f4e5336c618abbd9e5f93aeaf8/3/6/3615485023306-3615485023306-main_image-ecommerce-christianlouboutin-mloubipoolsolekeyring-1225192_b078_1_1200x1200.jpg",
+
+        /* THE NORTH FACE */
+
+      },
+     {
+
+      id: 1,
+        productName: "Premium Wind Jkt Outerwear The North Face Hoodie Jacket" ,
+        category: "Clothing",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 600.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/7407_220x.jpg?v=1687697639",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Upf Wind Jacket Outerwear The North Face Hoodie Jacket",
+        category: "Clothing",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 980.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/7416_220x.jpg?v=1687697891",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Sangro Pls Jkt Outerwear The North Face Hoodie Jacket",
+        category: "Clothing",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 100.0,
+        image: "https://thenorthface.com.ph/cdn/shop/files/1000359063_01_220x.jpg?v=1695189458",
+     
+      },
+     {
+
+
+      id: 1,
+        productName: "Tka Glacier Full Zip Jacket The North Face",
+        category: "Clothing",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 70.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/7341_220x.jpg?v=1687697535",
+
+      },
+     {
+
+      id: 1,
+        productName: "Summit High Trail Run S/S Shirt The North Face",
+        category: "Clothing",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 130.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/7446_220x.jpg?v=1687697963",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Vectiv Taraval Tech Boots The North Face",
+        category: "Shoes",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 900.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/6985_220x.jpg?v=1687759996",
+
+      },
+     {
+
+      id: 1,
+        productName: "Triarch Slide The North Face",
+        category: "Shoes",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 40.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/7187_220x.jpg?v=1687701980",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Flypack Moc The North Face",
+        category: "Shoes",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 230.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/7193_220x.jpg?v=1687701938",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Bc Slide Iii Boots The North Face",
+        category: "Shoes",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 50.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/6973_220x.jpg?v=1687757455",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Base Camp Slide III The North Face",
+        category: "Shoes",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 300.0,
+        image: "https://cdn.shopify.com/s/files/1/0772/9109/4317/products/7205_220x.jpg?v=1687701929",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Norm Hat Head Gear The North Face",
+        category: "Accessories",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 130.0,
+        image: "https://thenorthface.com.ph/cdn/shop/files/1000405130_01_220x.jpg?v=1693383559",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Etip Rcycld Gloves Accessories The North Face",
+        category: "Accessories",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 140.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/3933_220x.jpg?v=1687745821",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Class V Brimmer Head Gear Hat The North Face",
+        category: "Accessories",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 160.0,
+        image: "https://thenorthface.com.ph/cdn/shop/products/7246_220x.jpg?v=1687699028",
+
+      },
+     {
+
+      id: 1,
+        productName: "Basin 24 Backpack Bag The North Face",
+        category: "Accessories",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 190.0,
+        image: "https://thenorthface.com.ph/cdn/shop/files/1000458162_01_220x.jpg?v=1691981521",
+     
+      },
+     {
+
+      id: 1,
+        productName: "Kids Salty Dog Lined Beanie Head Gear The North Face",
+        category: "Accessories",
+        brand: "The North Face ",
+        quantity: 1,
+        price: 230.0,
+        image: "https://thenorthface.com.ph/cdn/shop/files/1000458775_01_220x.jpg?v=1701737512",
+         
+       
+      },
+     {
+
+      id: 1,
+        productName: "2015 RE-EDITION WOMEN'S PRINCETOWN Gucci",
+        category: "Shoes",
+        brand: "Gucci",
+        quantity: 1,
+        price: 220.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1659722403/397749_DKHH0_1063_001_100_0000_Light-2015-Re-Edition-womens-Princetown.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "WOMEN'S GG EMBOSSED SNEAKER Gucci",
+        category: "Shoes",
+        brand: "Gucci",
+        quantity: 1,
+        price: 210.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1627920004/670408_1XL10_9014_001_100_0000_Light-Womens-GG-embossed-sneaker.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "WOMEN'S GG SLINGBACK BALLET FLAT Gucci",
+        category: "Shoes",
+        brand: "Gucci",
+        quantity: 1,
+        price: 400.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1689960702/762420_KY980_9763_002_100_0000_Light-Womens-GG-slingback-ballet-flat.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "WOMEN'S GG MATELASSÉ LACE-UP BOOT Gucci",
+        category: "Shoes",
+        brand: "Gucci",
+        quantity: 1,
+        price: 340.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1664814617/718386_DS8U0_1000_001_095_0000_Light-Womens-GG-Matelass-lace-up-boot.jpg",
+     
+     },
+     {
+
+      id: 1,
+        productName: "WOMEN'S GUCCI ACE SNEAKER WITH WEB Gucci",
+        category: "Shoes",
+        brand: "Gucci",
+        quantity: 1,
+        price: 800.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1686848491/757943_AACAG_9055_001_100_0000_Light-Womens-Gucci-Ace-sneaker-with-Web.jpg",
+ 
+      },
+     {
+
+      id: 1,
+        productName: "CONTINENTAL WALLET WITH GUCCI SCRIPT Gucci",
+        category: "Accessories",
+        brand: "Gucci",
+        quantity: 1,
+        price: 960.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1690877871/772638_0OP0N_1440_001_100_0000_Light-Continental-wallet-with-Gucci-script.jpg",
+ 
+      },
+     {
+
+      id: 1,
+        productName: "CARD CASE WITH GUCCI SCRIPT Gucci",
+        category: "Accessories",
+        brand: "Gucci",
+        quantity: 1,
+        price: 1000.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1691080401/773428_0OP0N_5909_001_080_0000_Light-Card-case-with-Gucci-script.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "ROUND INTERLOCKING G ROPE SILK TIE Gucci",
+        category: "Accessories",
+        brand: "Gucci",
+        quantity: 1,
+        price: 1000.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1691080320/764965_4EABB_4174_001_100_0000_Light-Round-Interlocking-G-rope-silk-tie.jpg",
+
+      },
+     {
+
+      id: 1,
+        productName: "NAVIGATOR FRAME SUNGLASSES Gucci",
+        category: "Accessories",
+        brand: "Gucci",
+        quantity: 1,
+        price: 10.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1687192227/755268_I3330_8012_001_100_0000_Light-Navigator-frame-sunglasses.jpg",
+     
+      },
+     {
+
+      id: 1,
+        productName: "GUCCI DIVE WATCH, 40MM Gucci",
+        category: "Accessories",
+        brand: "Gucci",
+        quantity: 1,
+        price: 450.0,
+        image: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1687365204/750561_ICUA0_8155_001_100_0000_Light-Gucci-Dive-watch-40mm.jpg",
+   
+    },
+  ],
+};
+
+window.onload = () => {
+  for (let i of products.data) {
+    let card = document.createElement("div");
+    card.classList.add("card", i.category, "hide");
+
+    let imgContainer = document.createElement("div");
+    imgContainer.classList.add("image-container");
+
+    let image = document.createElement("img");
+    image.setAttribute("src", i.image);
+    imgContainer.appendChild(image);
+    card.appendChild(imgContainer);
+
+    let container = document.createElement("div");
+    container.classList.add("container");
+
+    let name = document.createElement("h5");
+    name.classList.add("product-name");
+    name.innerText = i.productName.toUpperCase();
+    container.appendChild(name);
+
+    let price = document.createElement("h6");
+    price.classList.add("product-price");
+    price.innerText = "$" + i.price;
+    container.appendChild(price);
+
+    card.appendChild(container);
+    document.getElementById("products").appendChild(card);
+  }
+
+  filterProduct("all");
+
+  document
+    .getElementById("search")
+    .addEventListener("click", searchByProductName);
+  document
+    .getElementById("price-range-search")
+    .addEventListener("click", filterByPriceRange);
+};
+
+function filterProduct(value) {
+  document.querySelectorAll(".button-value").forEach((button) => {
+    button.classList.toggle(
+      "active",
+      value.toUpperCase() == button.innerText.toUpperCase(),
+    );
+  });
+
+  document.querySelectorAll(".card").forEach((card) => {
+    card.classList.toggle(
+      "hide",
+      value != "all" && !card.classList.contains(value),
+    );
+  });
+}
+
+
+
+function searchByProductName() {
+  const searchInput = document.getElementById("search-input").value.toUpperCase().split(" ");
+  const productElements = document.querySelectorAll('.card');
+
+  productElements.forEach((card) => {
+  const productName = card.querySelector('.product-name').innerText.toUpperCase();
+  const productCategory = card.classList.value.toUpperCase();
+  const productContent = `${productName} ${productCategory}`;
+
+  const productFound = searchInput.every(word => productContent.includes(word));
+  card.classList.toggle('hide', !productFound);
+ });
+
+}
+
+function filterByPriceRange() {
+  let lowerLimit = document.querySelector(".input-min").value.trim();
+  let upperLimit = document.querySelector(".input-max").value.trim();
+
+  if (!lowerLimit || !upperLimit) {
+    alert("Uh oh! We couldn't find any listings.");
+    return;
+  }
+
+  lowerLimit = Number(lowerLimit);
+  upperLimit = Number(upperLimit);
+
+  let elements = document.querySelectorAll(".card");
+
+  if (lowerLimit && upperLimit) {
+    elements.forEach((element) => {
+      let price = Number(
+        element.querySelector(".product-price").innerText.replace("$", ""),
+      );
+      element.classList.toggle(
+        "hide",
+        price < lowerLimit || price > upperLimit,
+      );
+    });
+  }
+  const rangeInput = document.querySelectorAll(".range-input input"),
+    priceInput = document.querySelectorAll(".price-input input"),
+    range = document.querySelector(".slider .progress");
+  let priceGap = 10;
+
+  priceInput.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      let minPrice = parseInt(priceInput[0].value),
+        maxPrice = parseInt(priceInput[1].value);
+
+      if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+        if (e.target.className === "input-min") {
+          rangeInput[0].value = minPrice;
+          range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+        } else {
+          rangeInput[1].value = maxPrice;
+          range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+        }
+      }
+    });
+  });
+
+  rangeInput.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      let minVal = parseInt(rangeInput[0].value),
+        maxVal = parseInt(rangeInput[1].value);
+
+      if (maxVal - minVal >= priceGap) {
+        priceInput[0].value = minVal;
+        priceInput[1].value = maxVal;
+        range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+        range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+      }
+    });
+  });
+}
+
+filterByPriceRange();
+
+</script>
+</body>
+</html>
